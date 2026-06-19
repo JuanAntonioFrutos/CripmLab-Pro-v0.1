@@ -1,0 +1,6 @@
+.godot/
+android/build/build/
+android/build/libs/
+android/build/outputs/
+android/build/build.gradle.bak
+*.uid

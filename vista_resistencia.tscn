@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=3 uid="uid://6kemeasr5hjc"]
+
+[ext_resource type="Script" uid="uid://cu0a83wdg5lk0" path="res://vista_resistencia.gd" id="1_bq84d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Status"]
+bg_color = Color(0.12, 0.12, 0.14, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grafica"]
+bg_color = Color(0.04, 0.04, 0.04, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+
+[node name="VistaResistencia" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+script = ExtResource("1_bq84d")
+
+[node name="TituloResis" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "TEST RESISTENCIA"
+horizontal_alignment = 1
+
+[node name="SubTituloResis" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.57, 1)
+theme_override_font_sizes/font_size = 13
+text = "Time to Failure: El tiempo se activa al superar el objetivo y corta tras 0.5s abajo"
+horizontal_alignment = 1
+
+[node name="ContenedorEstado" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Status")
+
+[node name="LabelEstado" type="Label" parent="ContenedorEstado"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LISTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxVisualizadores" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxKilos" type="VBoxContainer" parent="HBoxVisualizadores"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LblKilos" type="Label" parent="HBoxVisualizadores/VBoxKilos"]
+layout_mode = 2
+text = "Fuerza Actual"
+horizontal_alignment = 1
+
+[node name="DisplayKilos" type="Label" parent="HBoxVisualizadores/VBoxKilos"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelCargaGrande"
+text = "0.0 Kg"
+horizontal_alignment = 1
+
+[node name="VBoxTiempo" type="VBoxContainer" parent="HBoxVisualizadores"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LblTiempo" type="Label" parent="HBoxVisualizadores/VBoxTiempo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.57, 1)
+text = "Tiempo Soportado"
+horizontal_alignment = 1
+
+[node name="DisplayTiempo" type="Label" parent="HBoxVisualizadores/VBoxTiempo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9, 0.46, 1)
+theme_override_font_sizes/font_size = 54
+text = "0.0 s"
+horizontal_alignment = 1
+
+[node name="ContenedorGrafica" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_grafica")
+
+[node name="GraficaLineal" type="Line2D" parent="ContenedorGrafica"]
+unique_name_in_owner = true
+width = 3.0
+default_color = Color(0.16, 0.71, 0.96, 1)
+
+[node name="SeccionParametros" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="LblMano" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Mano a Evaluar:"
+
+[node name="InputMano" type="OptionButton" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Lbl1" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Objetivo Tensión (% Intensidad):"
+
+[node name="InputPorcentaje" type="SpinBox" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 10.0
+value = 80.0
+
+[node name="LabelInfoObjetivo" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16, 0.71, 0.96, 1)
+theme_override_font_sizes/font_size = 14
+text = "Objetivo: 0.0 Kg"
+horizontal_alignment = 1
+
+[node name="BotonesTest" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BtnComenzarTest" type="Button" parent="BotonesTest"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonIniciar"
+text = "Comenzar Test"
+
+[node name="BtnParaTest" type="Button" parent="BotonesTest"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonParar"
+text = "Parar"
+
+[node name="ReproductorPitidos" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

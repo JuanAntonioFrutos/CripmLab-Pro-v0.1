@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2h4e5r6t7n8m"]
+
+[ext_resource type="Script" path="res://vista_historial.gd" id="1_script_historial"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grafica"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="VistaHistorial" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+script = ExtResource("1_script_historial")
+
+[node name="TituloHistorial" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "HISTORIAL GLOBAL Y EVOLUCIÓN"
+horizontal_alignment = 1
+
+[node name="HBoxFiltro" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelMano" type="Label" parent="HBoxFiltro"]
+layout_mode = 2
+text = "Ver datos de: "
+
+[node name="SelectorMano" type="OptionButton" parent="HBoxFiltro"]
+custom_minimum_size = Vector2(180, 35)
+layout_mode = 2
+
+[node name="PanelGrafica" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_grafica")
+
+[node name="LineaFuerza" type="Line2D" parent="PanelGrafica"]
+width = 3.0
+default_color = Color(0, 0.9, 0.46, 1)
+
+[node name="LineaResistencia" type="Line2D" parent="PanelGrafica"]
+width = 3.0
+default_color = Color(0.9, 0.2, 0.2, 1)
+
+[node name="LineaEntreno" type="Line2D" parent="PanelGrafica"]
+width = 2.5
+default_color = Color(0.2, 0.6, 1, 1)
+
+[node name="HBoxLeyenda" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LeyendaFuerza" type="Label" parent="HBoxLeyenda"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9, 0.46, 1)
+text = "● Fuerza Max"
+
+[node name="LeyendaResistencia" type="Label" parent="HBoxLeyenda"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.2, 0.2, 1)
+text = "● Resistencia"
+
+[node name="LeyendaEntreno" type="Label" parent="HBoxLeyenda"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.6, 1, 1)
+text = "● Media Entreno"
+
+[node name="ScrollTabla" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ContenedorTabla" type="VBoxContainer" parent="ScrollTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="HeaderTabla" type="GridContainer" parent="ScrollTabla/ContenedorTabla"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+columns = 4
+
+[node name="HFecha" type="Label" parent="ScrollTabla/ContenedorTabla/HeaderTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fecha"
+horizontal_alignment = 1
+
+[node name="HFuerza" type="Label" parent="ScrollTabla/ContenedorTabla/HeaderTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fuerza (Kg)"
+horizontal_alignment = 1
+
+[node name="HResis" type="Label" parent="ScrollTabla/ContenedorTabla/HeaderTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resist. (s)"
+horizontal_alignment = 1
+
+[node name="HEntreno" type="Label" parent="ScrollTabla/ContenedorTabla/HeaderTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Entreno (Ø Kg)"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollTabla/ContenedorTabla"]
+layout_mode = 2
+
+[node name="CuerpoTabla" type="GridContainer" parent="ScrollTabla/ContenedorTabla"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
+columns = 4

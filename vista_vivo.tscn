@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1v1v1v1v1v1v"]
+
+[ext_resource type="Script" uid="uid://cjoxwnmc8qxqt" path="res://vista_vivo.gd" id="2_vVivo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lista"]
+bg_color = Color(0.133333, 0.133333, 0.14902, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[node name="VistaVivo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_vVivo")
+
+[node name="TituloVivo" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "EN VIVO"
+horizontal_alignment = 1
+
+[node name="SubtituloVivo" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Fuerza actual aplicada al sensor"
+horizontal_alignment = 1
+
+[node name="DisplayKilos" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_type_variation = &"LabelCargaGrande"
+text = "0.0 Kg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ListaDispositivos" type="ItemList" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lista")
+
+[node name="BotonesContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BtnConectar" type="Button" parent="BotonesContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonIniciar"
+text = "Buscar Sensor"
+
+[node name="BtnTarar" type="Button" parent="BotonesContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonParar"
+text = "Tarar Cero"

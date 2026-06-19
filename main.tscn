@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsubyyxnu5xn"]
+
+[ext_resource type="Script" uid="uid://bmn15lcavs58d" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="FondoColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0784314, 1)
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MargenInterno" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxPrincipal" type="VBoxContainer" parent="MainContainer/MargenInterno"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TabsContainer" type="HBoxContainer" parent="MainContainer/MargenInterno/VBoxPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PanelVistas" type="PanelContainer" parent="MainContainer/MargenInterno/VBoxPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3

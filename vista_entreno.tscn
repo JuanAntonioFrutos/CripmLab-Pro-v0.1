@@ -1,0 +1,202 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8k1e3r2t7n5m"]
+
+[ext_resource type="Script" path="res://vista_entreno.gd" id="1_script_entreno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Status_Base"]
+bg_color = Color(0.121569, 0.121569, 0.141176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grafica_fija"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="VistaEntreno" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+script = ExtResource("1_script_entreno")
+
+[node name="TituloEntreno" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "ENTRENAMIENTO EN TIEMPO REAL"
+horizontal_alignment = 1
+
+[node name="HBoxSelectorRutinas" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelCargar" type="Label" parent="HBoxSelectorRutinas"]
+layout_mode = 2
+text = "Cargar Entrenamiento: "
+
+[node name="SelectorRutinas" type="OptionButton" parent="HBoxSelectorRutinas"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+
+[node name="ContenedorEstado" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Status_Base")
+
+[node name="VBox" type="VBoxContainer" parent="ContenedorEstado"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelEstado" type="Label" parent="ContenedorEstado/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IDLE"
+horizontal_alignment = 1
+
+[node name="DisplayKilos" type="Label" parent="ContenedorEstado/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelCargaGrande"
+text = "0.0 Kg"
+horizontal_alignment = 1
+
+[node name="PanelGrafica" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_grafica_fija")
+
+[node name="GraficaLineal" type="Line2D" parent="PanelGrafica"]
+unique_name_in_owner = true
+width = 2.0
+default_color = Color(0, 0.901961, 0.462745, 1)
+
+[node name="BandaObjetivo" type="ColorRect" parent="PanelGrafica"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.9, 0.7, 0.0, 0.2)
+
+[node name="HBoxGuardado" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="InputNombreConfig" type="LineEdit" parent="HBoxGuardado"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 2
+placeholder_text = "Nombre del entrenamiento..."
+alignment = 1
+caret_blink = true
+
+[node name="BtnGuardarConfig" type="Button" parent="HBoxGuardado"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"BotonGuardar"
+text = " Guardar Config "
+
+[node name="ScrollParametros" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SeccionParametros" type="GridContainer" parent="ScrollParametros"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="LblMano" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Selección de Mano:"
+
+[node name="InputMano" type="OptionButton" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LblPorc" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Porcentaje Esfuerzo (%):"
+
+[node name="InputPorc" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 70.0
+
+[node name="LblTarget" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Carga Objetivo Calculada:"
+
+[node name="LabelTargetInfo" type="Label" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Target: 0.0 Kg"
+
+[node name="LblHang" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Tiempo Esfuerzo:"
+
+[node name="InputHang" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 7.0
+suffix = " seg"
+
+[node name="LblRest" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Tiempo Descanso:"
+
+[node name="InputRest" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 3.0
+suffix = " seg"
+
+[node name="LblReps" type="Label" parent="ScrollParametros/SeccionParametros"]
+layout_mode = 2
+text = "Repeticiones / Serie:"
+
+[node name="InputReps" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+value = 6.0
+
+[node name="HBoxBotones" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="BtnIniciar" type="Button" parent="HBoxBotones"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 45)
+layout_mode = 2
+theme_type_variation = &"BotonIniciar"
+text = " Iniciar "
+
+[node name="BtnParar" type="Button" parent="HBoxBotones"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 45)
+layout_mode = 2
+theme_type_variation = &"BotonParar"
+text = " Parar "

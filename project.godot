@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="CrimpLab"
+run/main_scene="uid://bpsubyyxnu5xn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+RegletasManager="*res://regletas_manager.gd"
+ConfigManager="*res://config_manager.gd"
+VozManager="*res://VozManager.gd"
+UsuarioManager="*res://usuario_manager.gd"
+
+[display]
+
+window/size/viewport_width=450
+window/size/viewport_height=800
+window/size/mode=3
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+theme/custom="uid://dpmuxm6ost51b"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

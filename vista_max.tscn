@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2v2v2v2v2v2v"]
+
+[ext_resource type="Script" path="res://vista_max.gd" id="2_vMax"]
+
+[node name="VistaMax" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+script = ExtResource("2_vMax")
+
+[node name="TituloMax" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "TEST DE FUERZA MÁXIMA"
+horizontal_alignment = 1
+
+[node name="ContenedorEstado" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelEstado" type="Label" parent="ContenedorEstado"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IDLE"
+horizontal_alignment = 1
+
+[node name="DisplayKilosMax" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelCargaGrande"
+text = "0.0 Kg"
+horizontal_alignment = 1
+
+[node name="ContenedorGrafica" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraficaLineal" type="Line2D" parent="ContenedorGrafica"]
+unique_name_in_owner = true
+width = 4.0
+
+[node name="SeccionParametros" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Lbl1" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Tracción (seg)"
+
+[node name="InputTraccion" type="SpinBox" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 5.0
+
+[node name="Lbl2" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Descanso IRCRA (seg)"
+
+[node name="InputDescanso" type="SpinBox" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 600.0
+value = 180.0
+
+[node name="Lbl3" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Intentos"
+
+[node name="InputIntentos" type="SpinBox" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 3.0
+
+[node name="Lbl4" type="Label" parent="SeccionParametros"]
+layout_mode = 2
+text = "Mano"
+
+[node name="InputMano" type="OptionButton" parent="SeccionParametros"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RecordsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelMaxIzq" type="Label" parent="RecordsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max Izq: 0.0 Kg"
+
+[node name="Separador" type="Control" parent="RecordsContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="LabelMaxDer" type="Label" parent="RecordsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Max Der: 0.0 Kg"
+
+[node name="BotonesTest" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BtnComenzarTest" type="Button" parent="BotonesTest"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonIniciar"
+text = "Comenzar"
+
+[node name="BtnParaTest" type="Button" parent="BotonesTest"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BotonParar"
+text = "Parar"

@@ -1,0 +1,201 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxhg0mf2dddav"]
+
+[ext_resource type="Script" path="res://vista_config.gd" id="1_v4x7q"]
+
+[node name="VistaConfig" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_v4x7q")
+
+[node name="LabelTitulo" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "CONFIGURACIÓN"
+horizontal_alignment = 1
+
+[node name="HSeparator1" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="LabelSeccionAudio" type="Label" parent="."]
+layout_mode = 2
+text = "Ajustes de Audio"
+
+[node name="SeccionAudio" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="LabelVoz" type="Label" parent="SeccionAudio"]
+layout_mode = 2
+text = "Activar Guía por Voz:"
+
+[node name="CheckVoz" type="CheckBox" parent="SeccionAudio"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Voz"
+
+[node name="LabelVolVoz" type="Label" parent="SeccionAudio"]
+layout_mode = 2
+text = "Volumen de Voz:"
+
+[node name="SliderVoz" type="HSlider" parent="SeccionAudio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="LabelPitidos" type="Label" parent="SeccionAudio"]
+layout_mode = 2
+text = "Activar Pitidos Rítmicos:"
+
+[node name="CheckPitidos" type="CheckBox" parent="SeccionAudio"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pitidos"
+
+[node name="LabelVolPitidos" type="Label" parent="SeccionAudio"]
+layout_mode = 2
+text = "Volumen de Pitidos:"
+
+[node name="SliderPitidos" type="HSlider" parent="SeccionAudio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="LabelSeccionVisual" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.901961, 0.462745, 1)
+text = "Tema Base y Componentes"
+
+[node name="SeccionVisual" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="LabelTema" type="Label" parent="SeccionVisual"]
+layout_mode = 2
+text = "Seleccionar Tema Base:"
+
+[node name="ComboTema" type="OptionButton" parent="SeccionVisual"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="LabelSeccionEstilos" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.901961, 0.462745, 1)
+text = "Personalización de Estilos UI"
+
+[node name="ScrollEstilos" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SeccionEstilos" type="GridContainer" parent="ScrollEstilos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="LabelSizeTitulos" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Tamaño Letra Títulos:"
+
+[node name="InputSizeTitulos" type="SpinBox" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 16.0
+max_value = 60.0
+value = 24.0
+
+[node name="LabelSizeNormal" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Tamaño Letra Normal:"
+
+[node name="InputSizeNormal" type="SpinBox" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 10.0
+max_value = 30.0
+value = 15.0
+
+[node name="LabelSizeCargas" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Tamaño Letra Carga/Kilos:"
+
+[node name="InputSizeCargas" type="SpinBox" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 40.0
+max_value = 120.0
+value = 72.0
+
+[node name="LabelColorTitulos" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color de Títulos:"
+
+[node name="PickerColorTitulos" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="LabelColorNormal" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color Texto Normal:"
+
+[node name="PickerColorNormal" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="LabelColorBtnIniciar" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color Botón Iniciar:"
+
+[node name="PickerColorBtnIniciar" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="LabelColorBtnParar" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color Botón Parar:"
+
+[node name="PickerColorBtnParar" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="LabelColorBtnGuardar" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color Botón Guardar:"
+
+[node name="PickerColorBtnGuardar" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+
+[node name="LabelColorGrafica" type="Label" parent="ScrollEstilos/SeccionEstilos"]
+layout_mode = 2
+text = "Color Línea Gráfica:"
+
+[node name="PickerColorGrafica" type="ColorPickerButton" parent="ScrollEstilos/SeccionEstilos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
