@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2h4e5r6t7n8m"]
 
-[ext_resource type="Script" path="res://vista_historial.gd" id="1_script_historial"]
+[ext_resource type="Script" uid="uid://br237ahmv27sh" path="res://vista_historial.gd" id="1_script_historial"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grafica"]
 bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
@@ -19,6 +19,12 @@ theme_override_constants/separation = 14
 script = ExtResource("1_script_historial")
 
 [node name="TituloHistorial" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "HISTORIAL GLOBAL Y EVOLUCIÓN"
+horizontal_alignment = 1
+
+[node name="TuLabelUsuario" type="Label" parent="."]
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "HISTORIAL GLOBAL Y EVOLUCIÓN"

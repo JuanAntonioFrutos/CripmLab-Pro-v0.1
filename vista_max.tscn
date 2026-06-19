@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2v2v2v2v2v2v"]
 
-[ext_resource type="Script" path="res://vista_max.gd" id="2_vMax"]
+[ext_resource type="Script" uid="uid://rcn2ffcivwwq" path="res://vista_max.gd" id="2_vMax"]
 
 [node name="VistaMax" type="VBoxContainer"]
 anchors_preset = 15
@@ -13,6 +13,12 @@ script = ExtResource("2_vMax")
 
 [node name="TituloMax" type="Label" parent="."]
 unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "TEST DE FUERZA MÁXIMA"
+horizontal_alignment = 1
+
+[node name="TuLabelUsuario" type="Label" parent="."]
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "TEST DE FUERZA MÁXIMA"

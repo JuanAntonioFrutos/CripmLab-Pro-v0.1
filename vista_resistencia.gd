@@ -27,6 +27,11 @@ var max_puntos_grafica: int = 150
 @onready var btn_parar = get_node_or_null("%BtnParaTest")
 
 func _ready():
+	if UsuarioManager.usuario_actual != "":
+		$TuLabelUsuario.text = "Atleta: " + UsuarioManager.usuario_actual
+	else:
+		$TuLabelUsuario.text = "Sin atleta seleccionado"
+	
 	if is_instance_valid(input_porcentaje):
 		input_porcentaje.value = 80
 		input_porcentaje.value_changed.connect(func(_v): _recalcular_fuerza_objetivo())
@@ -170,6 +175,7 @@ func _on_comenzar():
 	_decir_voz("Prepararse")
 
 func _on_parar():
+	UsuarioManager.guardar_datos_de_test("test_resis", tiempo_transcurrido)
 	if not test_activo: return
 	test_activo = false
 	_desactivar_controles(false)
@@ -178,6 +184,7 @@ func _on_parar():
 	_decir_voz("Test cancelado")
 
 func _finalizar_test_exito():
+	UsuarioManager.guardar_datos_de_test("test_resis", tiempo_transcurrido)
 	test_activo = false
 	_desactivar_controles(false)
 	_cambiar_estado_sistema("FINALIZADO")

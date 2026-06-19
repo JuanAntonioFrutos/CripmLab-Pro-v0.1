@@ -49,6 +49,13 @@ var btn_eliminar_rutina: Button = null
 @onready var btn_parar = %BtnParar if has_node("%BtnParar") else get_node_or_null("HBoxBotones/BtnParar")
 
 func _ready():
+	if UsuarioManager.usuario_actual != "":
+		$TuLabelUsuario.text = "Atleta: " + UsuarioManager.usuario_actual
+	else:
+		$TuLabelUsuario.text = "Sin atleta seleccionado"
+	
+	
+	
 	add_to_group("interfaz_rediseñable")
 	_on_estilos_actualizados()
 	

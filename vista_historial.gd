@@ -7,7 +7,7 @@ var ancho_grafica: float = 340.0
 var alto_grafica: float = 180.0
 var max_escala_kilos: float = 100.0
 
-# 🌟 REFERENCIAS CORREGIDAS MEDIANTE RUTA DIRECTA (Sin usar %)
+# 🌟 REFERENCIAS MEDIANTE RUTA DIRECTA
 @onready var selector_mano = $HBoxFiltro/SelectorMano
 @onready var linea_fuerza = $PanelGrafica/LineaFuerza
 @onready var linea_resistencia = $PanelGrafica/LineaResistencia
@@ -19,8 +19,12 @@ var datos_izq: Array = []
 var datos_der: Array = []
 
 func inicializar(main_node):
-	main_referencia = main_node
+	if UsuarioManager.usuario_actual != "":
+		$TuLabelUsuario.text = "Atleta: " + UsuarioManager.usuario_actual
+	else:
+		$TuLabelUsuario.text = "Sin atleta seleccionado"
 	
+	main_referencia = main_node
 	add_to_group("interfaz_rediseñable")
 	
 	# Configurar selector de mano
@@ -31,7 +35,7 @@ func inicializar(main_node):
 	if not selector_mano.item_selected.is_connected(_on_mano_cambiada):
 		selector_mano.item_selected.connect(_on_mano_cambiada)
 	
-	# Cargar y procesar el histórico
+	# Cargar y procesar el histórico centralizado
 	_cargar_datos_desde_disco()
 	_actualizar_pantalla()
 	
@@ -47,23 +51,37 @@ func _cargar_datos_desde_disco():
 		print("No hay ningún usuario activo en UsuarioManager.")
 		return
 	
-	# Ruta dinámica basada en el nombre del usuario seleccionado
-	var path_usuario = "user://historial_" + usuario + ".json"
+	# 1. Leemos el JSON maestro a través del método existente en tu UsuarioManager
+	var perfiles = UsuarioManager._leer_todos_los_perfiles()
 	
-	if FileAccess.file_exists(path_usuario):
-		var archivo = FileAccess.open(path_usuario, FileAccess.READ)
-		var json_texto = archivo.get_as_text()
-		archivo.close()
+	# 2. Si el usuario tiene historial guardado en el sistema central, lo procesamos
+	if perfiles.has(usuario) and perfiles[usuario].has("historial"):
+		var lista_entrenos = perfiles[usuario]["historial"]
+		print("Procesando historial desde el JSON central para: ", usuario)
 		
-		var datos = JSON.parse_string(json_texto)
-		if datos is Dictionary:
-			datos_izq = datos.get("izq", [])
-			datos_der = datos.get("der", [])
-			print("Historial cargado con éxito para el usuario: ", usuario)
+		for registro in lista_entrenos:
+			var fecha_completa = registro.get("fecha", "00/00")
+			var tipo = registro.get("tipo", "")
+			var valor = registro.get("valor", 0.0)
+			
+			# Formateamos la estructura para que tus Line2D y la tabla la entiendan de forma nativa
+			# Nota: Si en el futuro guardas la mano ("izq" o "der") en el test, podrás filtrarlo aquí.
+			# De momento, para asegurar la retrocompatibilidad, lo añadimos a ambas listas.
+			var estructura_punto = {
+				"fecha": fecha_completa.substr(0, 5), # Corta a "DD/MM" para la gráfica
+				"fuerza": valor if tipo == "test_max" else 0.0,
+				"resistencia": valor if tipo == "test_resis" else 0.0,
+				"entreno": valor if tipo == "entreno" else 0.0
+			}
+			
+			datos_izq.append(estructura_punto)
+			datos_der.append(estructura_punto)
+			
+		print("Historial cargado con éxito para el usuario: ", usuario)
 	else:
 		# 💡 Si el archivo real no existe aún para este usuario, generamos
 		# datos simulados temporales para que la gráfica no salga vacía mientras prueba
-		print("No se encontró archivo real. Generando datos de ejemplo para: ", usuario)
+		print("No se encontró historial real en el mánager. Generando ejemplos para: ", usuario)
 		var fechas = ["01/06", "02/06", "03/06", "04/06", "05/06"]
 		
 		for i in range(fechas.size()):
@@ -125,7 +143,6 @@ func _llenar_tabla_datos(datos: Array):
 	datos_invertidos.reverse()
 	
 	for d in datos_invertidos:
-		# 🌟 CALCULO CORRECTO: Dentro del bucle, 'd' existe aquí.
 		# Evitamos división por cero si el peso del usuario es 0 por algún error
 		var peso_usuario = UsuarioManager.peso_actual if UsuarioManager.peso_actual > 0 else 70.0
 		var porcentaje_fuerza = (d["fuerza"] / peso_usuario) * 100.0
@@ -139,7 +156,6 @@ func _llenar_tabla_datos(datos: Array):
 		
 		# --- Columna 2: Fuerza Max + % de su peso ---
 		var lbl_fuerza = Label.new()
-		# Muestra los Kg y al lado el % respecto a su peso corporal (Ej: "45.0 Kg (64.2%)")
 		lbl_fuerza.text = "%.1f Kg (%.1f%%)" % [d["fuerza"], porcentaje_fuerza]
 		lbl_fuerza.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl_fuerza.size_flags_horizontal = Control.SIZE_EXPAND_FILL

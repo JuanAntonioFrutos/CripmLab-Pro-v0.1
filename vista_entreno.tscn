@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8k1e3r2t7n5m"]
 
-[ext_resource type="Script" path="res://vista_entreno.gd" id="1_script_entreno"]
+[ext_resource type="Script" uid="uid://12hlvpdmbyvl" path="res://vista_entreno.gd" id="1_script_entreno"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Status_Base"]
 bg_color = Color(0.121569, 0.121569, 0.141176, 1)
@@ -26,6 +26,12 @@ theme_override_constants/separation = 14
 script = ExtResource("1_script_entreno")
 
 [node name="TituloEntreno" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "ENTRENAMIENTO EN TIEMPO REAL"
+horizontal_alignment = 1
+
+[node name="TuLabelUsuario" type="Label" parent="."]
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "ENTRENAMIENTO EN TIEMPO REAL"
@@ -83,7 +89,7 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.9, 0.7, 0.0, 0.2)
+color = Color(0.9, 0.7, 0, 0.2)
 
 [node name="HBoxGuardado" type="HBoxContainer" parent="."]
 layout_mode = 2

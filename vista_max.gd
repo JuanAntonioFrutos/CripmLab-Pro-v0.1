@@ -32,6 +32,12 @@ var segundo_actual_int: int = -1
 @onready var label_max_der = %LabelMaxDer
 
 func inicializar(main_node):
+	if UsuarioManager.usuario_actual != "":
+		$TuLabelUsuario.text = "Atleta: " + UsuarioManager.usuario_actual
+	else:
+		$TuLabelUsuario.text = "Sin atleta seleccionado"
+	
+	
 	add_to_group("interfaz_rediseñable")
 	_on_estilos_actualizados()
 	main_referencia = main_node
@@ -188,6 +194,8 @@ func _desactivar_controles(bloquear: bool):
 	btn_comenzar.disabled = bloquear
 
 func _guardar_pico_intento():
+	UsuarioManager.guardar_datos_de_test("test_max", pico_intento_actual)
+	
 	var prefijo = _obtener_prefijo_mano()
 	if prefijo == "IZQ":
 		if pico_intento_actual > RegletasManager.record_max_izq:

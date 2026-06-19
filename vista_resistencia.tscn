@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://6kemeasr5hjc"]
 
-[ext_resource type="Script" uid="uid://cu0a83wdg5lk0" path="res://vista_resistencia.gd" id="1_bq84d"]
+[ext_resource type="Script" uid="uid://c2rdv46as6awa" path="res://vista_resistencia.gd" id="1_bq84d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Status"]
 bg_color = Color(0.12, 0.12, 0.14, 1)
@@ -22,6 +22,12 @@ theme_override_constants/separation = 12
 script = ExtResource("1_bq84d")
 
 [node name="TituloResis" type="Label" parent="."]
+layout_mode = 2
+theme_type_variation = &"LabelTitulo"
+text = "TEST RESISTENCIA"
+horizontal_alignment = 1
+
+[node name="TuLabelUsuario" type="Label" parent="."]
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "TEST RESISTENCIA"
