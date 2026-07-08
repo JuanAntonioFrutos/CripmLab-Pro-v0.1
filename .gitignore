@@ -4,3 +4,16 @@ android/build/libs/
 android/build/outputs/
 android/build/build.gradle.bak
 *.uid
+# Godot binarios y exports
+.godot/
+*.uid
+android/build/
+
+# Gradle y Android builds temporales
+.gradle/
+build/
+captures/
+*.apk
+*.ap_
+*.pck
+*.sparsepck
