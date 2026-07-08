@@ -26,28 +26,35 @@ theme_override_constants/separation = 14
 script = ExtResource("1_script_entreno")
 
 [node name="TituloEntreno" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "ENTRENAMIENTO EN TIEMPO REAL"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="TuLabelUsuario" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "ENTRENAMIENTO EN TIEMPO REAL"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="HBoxSelectorRutinas" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
 [node name="LabelCargar" type="Label" parent="HBoxSelectorRutinas"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Cargar Entrenamiento: "
+autowrap_mode = 3
 
 [node name="SelectorRutinas" type="OptionButton" parent="HBoxSelectorRutinas"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 35)
+custom_minimum_size = Vector2(120, 35)
 layout_mode = 2
 
 [node name="ContenedorEstado" type="PanelContainer" parent="."]
@@ -100,9 +107,10 @@ alignment = 1
 
 [node name="InputNombreConfig" type="LineEdit" parent="HBoxGuardado"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(220, 40)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-placeholder_text = "Nombre del entrenamiento..."
+size_flags_horizontal = 3
+placeholder_text = "Nombre..."
 alignment = 1
 caret_blink = true
 
@@ -121,72 +129,93 @@ horizontal_scroll_mode = 0
 [node name="SeccionParametros" type="GridContainer" parent="ScrollParametros"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 12
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 2
 
 [node name="LblMano" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Selección de Mano:"
+autowrap_mode = 3
 
 [node name="InputMano" type="OptionButton" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="LblPorc" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Porcentaje Esfuerzo (%):"
+autowrap_mode = 3
 
 [node name="InputPorc" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 min_value = 1.0
 value = 70.0
 
 [node name="LblTarget" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Carga Objetivo Calculada:"
+autowrap_mode = 3
 
 [node name="LabelTargetInfo" type="Label" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.16078432, 0.70980394, 0.9607843, 1)
 text = "Target: 0.0 Kg"
+autowrap_mode = 3
 
 [node name="LblHang" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Tiempo Esfuerzo:"
+autowrap_mode = 3
 
 [node name="InputHang" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 min_value = 1.0
 value = 7.0
 suffix = " seg"
 
 [node name="LblRest" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Tiempo Descanso:"
+autowrap_mode = 3
 
 [node name="InputRest" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 min_value = 1.0
 value = 3.0
 suffix = " seg"
 
 [node name="LblReps" type="Label" parent="ScrollParametros/SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Repeticiones / Serie:"
+autowrap_mode = 3
 
 [node name="InputReps" type="SpinBox" parent="ScrollParametros/SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 min_value = 1.0
 value = 6.0
 
@@ -197,14 +226,16 @@ alignment = 1
 
 [node name="BtnIniciar" type="Button" parent="HBoxBotones"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 45)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"BotonIniciar"
 text = " Iniciar "
 
 [node name="BtnParar" type="Button" parent="HBoxBotones"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 45)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_type_variation = &"BotonParar"
 text = " Parar "

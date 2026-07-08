@@ -34,11 +34,13 @@ text = "TEST RESISTENCIA"
 horizontal_alignment = 1
 
 [node name="SubTituloResis" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.55, 0.57, 1)
 theme_override_font_sizes/font_size = 13
 text = "Time to Failure: El tiempo se activa al superar el objetivo y corta tras 0.5s abajo"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ContenedorEstado" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -55,7 +57,7 @@ vertical_alignment = 1
 
 [node name="HBoxVisualizadores" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="VBoxKilos" type="VBoxContainer" parent="HBoxVisualizadores"]
 layout_mode = 2
@@ -105,31 +107,37 @@ default_color = Color(0.16, 0.71, 0.96, 1)
 
 [node name="SeccionParametros" type="GridContainer" parent="."]
 layout_mode = 2
-theme_override_constants/h_separation = 20
+theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 8
 columns = 2
 
 [node name="LblMano" type="Label" parent="SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Mano a Evaluar:"
+autowrap_mode = 3
 
 [node name="InputMano" type="OptionButton" parent="SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="Lbl1" type="Label" parent="SeccionParametros"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Objetivo Tensión (% Intensidad):"
+autowrap_mode = 3
 
 [node name="InputPorcentaje" type="SpinBox" parent="SeccionParametros"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 min_value = 10.0
 value = 80.0
 
 [node name="LabelInfoObjetivo" type="Label" parent="."]
-unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16, 0.71, 0.96, 1)
 theme_override_font_sizes/font_size = 14
@@ -138,6 +146,7 @@ horizontal_alignment = 1
 
 [node name="BotonesTest" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/separation = 15
 
 [node name="BtnComenzarTest" type="Button" parent="BotonesTest"]

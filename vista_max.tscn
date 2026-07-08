@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2v2v2v2v2v2v"]
+[gd_scene load_steps=3 format=3 uid="uid://b2v2v2v2v2v2v"]
 
 [ext_resource type="Script" uid="uid://rcn2ffcivwwq" path="res://vista_max.gd" id="2_vMax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grafica_fija"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="VistaMax" type="VBoxContainer"]
 anchors_preset = 15
@@ -13,16 +20,20 @@ script = ExtResource("2_vMax")
 
 [node name="TituloMax" type="Label" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "TEST DE FUERZA MÁXIMA"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="TuLabelUsuario" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_type_variation = &"LabelTitulo"
 text = "TEST DE FUERZA MÁXIMA"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ContenedorEstado" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -43,14 +54,16 @@ theme_override_font_sizes/font_size = 54
 text = "0.0 Kg"
 horizontal_alignment = 1
 
-[node name="ContenedorGrafica" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="GraficaLineal" type="Line2D" parent="ContenedorGrafica"]
+[node name="PanelGrafica" type="Panel" parent="."]
 unique_name_in_owner = true
-width = 4.0
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_grafica_fija")
+
+[node name="GraficaLineal" type="Line2D" parent="PanelGrafica"]
+unique_name_in_owner = true
+width = 2.0
+default_color = Color(0, 0.901961, 0.462745, 1)
 
 [node name="SeccionParametros" type="GridContainer" parent="."]
 layout_mode = 2
@@ -112,10 +125,12 @@ text = "Max Der: 0.0 Kg"
 
 [node name="BotonesTest" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/separation = 15
 
 [node name="BtnComenzarTest" type="Button" parent="BotonesTest"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BotonIniciar"
@@ -123,6 +138,7 @@ text = "Comenzar"
 
 [node name="BtnParaTest" type="Button" parent="BotonesTest"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BotonParar"
