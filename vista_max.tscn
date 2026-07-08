@@ -38,6 +38,8 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"LabelCargaGrande"
+theme_override_colors/font_color = Color(0.16078432, 0.70980394, 0.9607843, 1)
+theme_override_font_sizes/font_size = 54
 text = "0.0 Kg"
 horizontal_alignment = 1
 

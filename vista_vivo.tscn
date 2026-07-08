@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1v1v1v1v1v1v"]
 
-[ext_resource type="Script" uid="uid://cjoxwnmc8qxqt" path="res://vista_vivo.gd" id="2_vVivo"]
+[ext_resource type="Script" uid="uid://cs2khdaeg2wrk" path="res://vista_vivo.gd" id="2_vVivo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lista"]
 bg_color = Color(0.133333, 0.133333, 0.14902, 1)
@@ -34,6 +34,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 theme_type_variation = &"LabelCargaGrande"
+theme_override_colors/font_color = Color(0.16078432, 0.70980394, 0.9607843, 1)
+theme_override_font_sizes/font_size = 54
 text = "0.0 Kg"
 horizontal_alignment = 1
 vertical_alignment = 1
